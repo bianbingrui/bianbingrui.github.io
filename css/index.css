@@ -1,3 +1,239 @@
+/* Global Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+#page_header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header_wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog_title {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Side Card Styles */
+.side-card {
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin: 2rem;
+}
+
+.author-avatar {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+}
+
+.author-discrip h3 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.author-bio {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Social Links */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.social-icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--secondary-color);
+}
+
+/* Main Content */
+#page_main {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.page {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+/* Education Section */
+.education-item {
+    margin-bottom: 2rem;
+}
+
+.education-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.degree {
+    font-weight: bold;
+    color: #666;
+}
+
+.time-period {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.achievements {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+/* Research Interests */
+.research-interests {
+    list-style-type: none;
+    padding: 0;
+}
+
+.research-interests li {
+    background: var(--light-gray);
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-radius: 4px;
+    transition: transform 0.3s;
+}
+
+.research-interests li:hover {
+    transform: translateX(10px);
+}
+
+/* Skills Section */
+.skills-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background: var(--light-gray);
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Footer */
+#page_footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer_wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #page_main {
+        grid-template-columns: 1fr;
+    }
+
+    .side-card {
+        width: auto;
+        margin: 1rem;
+    }
+
+    .skills-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.page {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #ecf0f1;
+        --secondary-color: #3498db;
+        --text-color: #ecf0f1;
+        --light-gray: #2c3e50;
+        --border-color: #34495e;
+    }
+
+    body {
+        background-color: #1a1a1a;
+    }
+
+    .side-card, .page {
+        background-color: #2c3e50;
+    }
+}
+
 .page pre,
 .page .highlight {
   overflow: auto;

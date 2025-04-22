@@ -102,3 +102,112 @@ $(function () {
     });
 
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Mobile menu toggle
+    const menuButton = document.querySelector('.menus_icon');
+    const navItems = document.querySelector('.menus_items');
+    
+    menuButton.addEventListener('click', () => {
+        navItems.classList.toggle('active');
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.cd-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.opacity = '1';
+            backToTopButton.style.visibility = 'visible';
+        } else {
+            backToTopButton.style.opacity = '0';
+            backToTopButton.style.visibility = 'hidden';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Skills animation
+    const skills = document.querySelectorAll('.skills-list li');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeIn 0.5s ease-in forwards';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    skills.forEach(skill => {
+        observer.observe(skill);
+    });
+
+    // Social links animation
+    const socialIcons = document.querySelectorAll('.social-icon');
+    
+    socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.2)';
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'scale(1)';
+        });
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.className = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    document.querySelector('.header_wrap').appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        icon.classList.toggle('fa-moon');
+        icon.classList.toggle('fa-sun');
+    });
+
+    // Add dark mode styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .dark-mode {
+            --primary-color: #ecf0f1;
+            --secondary-color: #3498db;
+            --text-color: #ecf0f1;
+            --light-gray: #2c3e50;
+            --border-color: #34495e;
+            background-color: #1a1a1a;
+        }
+        
+        .dark-mode .side-card,
+        .dark-mode .page {
+            background-color: #2c3e50;
+        }
+        
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+        }
+    `;
+    document.head.appendChild(style);
+});
